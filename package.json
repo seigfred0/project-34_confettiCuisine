@@ -1,0 +1,19 @@
+{
+  "name": "project-34_confetticuisine",
+  "version": "1.0.0",
+  "description": "Website for cooking classes",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "seigfred",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "nodemon": "^3.0.2"
+  }
+}
+
