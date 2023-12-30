@@ -23,6 +23,7 @@ const express = require('express');
 const app = express();
 const layouts = require('express-ejs-layouts');
 
+const errorController = require('./controllers/errorController')
 const homeController = require('./controllers/homeControllers')
 
 
@@ -43,6 +44,10 @@ app.get("/", (req, res) => {
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
 app.post("/contact", homeController.postedSignUpForm);
+
+
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError);
 
 
 app.listen(app.get("port"), () => {

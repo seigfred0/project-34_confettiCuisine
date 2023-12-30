@@ -60,7 +60,7 @@ nav ul {
 .home-image{
     width: 100%;
     max-height: 500px;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     justify-content: right;
 
@@ -70,7 +70,7 @@ nav ul {
 .home-text {
     width: 100%;
     min-height: 100%;
-    background-color:  skyblue;
+    /* background-color:  skyblue; */
     text-align: left;
     padding: 1em;
 
@@ -96,9 +96,10 @@ nav ul {
     padding-right: 3em;
 }
 
-.home-page {
+.page {
     max-width: 70%;
     margin: auto;
+    margin-top: 3em;
 }
 
 .page-container {
@@ -108,4 +109,35 @@ nav ul {
 
 .home-image img {
     width: 80%;
+    border-radius: 10px;
+}
+
+
+
+
+/* cOURSES */
+.courses-page .home-text h1 {
+    margin-top: 0em;
+}
+
+.contact-page form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.contact-page form input.btn {
+    width: 50%;
+
+    padding: 7px;
+    margin: 1.5em auto;
+}
+
+.contact-page .home-image {
+    width: 50%;
+}
+
+.contact-page .home-image img {
+    width: 100%;
 }

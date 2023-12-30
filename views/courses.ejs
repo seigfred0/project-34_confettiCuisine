@@ -1,5 +1,18 @@
-<h1>Our Courses</h1>
-<% offeredCourses.forEach( course => { %>
-    <h5><%= course.title %></h5>
-    <span>$ <%= course.cost %> </span>
-<% });  %>
+<section class="courses-page page">
+    <div class="page-container">
+        <div class="home-image">
+            <img src="/images/food2.jpg" alt="">
+        </div>
+        <div class="home-text">
+           <h1>Be the next master chef!</h1>
+
+           <h3>Indulge in Culinary Excellence</h3>
+           <% offeredCourses.forEach( course => { %>
+               <h5><%= course.title %></h5>
+               <span>$ <%= course.cost %> </span>
+           <% });  %>
+           
+        </div>
+    </div>
+</section>
+
