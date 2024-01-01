@@ -48,8 +48,9 @@
 //     // Close the connection after operations
 //     client.close();
 // });
-
 const mongoose = require('mongoose');
+const Subscriber = require("./models/subscriber");
+
 mongoose.connect(
     "mongodb://localhost:27017/recipe_db",
 );
@@ -59,13 +60,30 @@ db.once("open", () => {
     console.log("succes")
 })
 
-const subscriberSchema = mongoose.Schema({
-    name: String,
-    email: String,
-    zipCode: Number
-})
 
-const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+
+var subscriber1 = new Subscriber({
+    name: "Jon Wexler",
+    email: "jon@jonwexler.com"
+});
+
+var subscriber2 = new Subscriber({
+    name: "Seigfred Sayson",
+    email: "seigfred@mail.com"
+});
+
+Subscriber.create()
+subscriber1.save()
+subscriber2.save()
+
+    // {
+    //     name: "Jon Wexler",
+    //     email: "jon@jonwexler.com"
+    // },
+    // function (error, savedDocument) {
+    //     if (error) console.log(error);
+    //     console.log(savedDocument)
+    // }
 
 
 
