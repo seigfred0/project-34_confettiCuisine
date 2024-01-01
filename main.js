@@ -1,23 +1,73 @@
-// const port = 3000;
-// const http = require('http');
+// const MongoDB = require('mongodb')
+// const dbURL = "mongodb://localhost:27017";
+// const dbName = "recipe_db";
 
-// const router = require('./router');
-// const contentType = require('./contentTypes');
-// const utils = require('./utils');
 
-// router.get("/", (req, res) => {
-//     res.writeHead(200, contentType.html);
-//     utils.getFile("views/index.html", res)
+// MongoDB.connect(dbURL, (error, client) => {
+//     if (error) throw error;
+//     let db = client.db(dbName);
+//     db.collection("contacts").find().toArray((error, data) => {
+//         if (error) throw error;
+//         console.log(data);
+//     })
+
+//     db.collection("contacts").insert({
+//         name: "Freddie Mercury",
+//         email: "fredie@email.com"
+//     }, (error, db) => {
+//         if (error) throw error;
+//         console.log(db);
+//     })
 // })
+// const { MongoClient } = require('mongodb');
 
-// router.get("/confetti_cuisine.css", (req, res) => {
-//     res.writeHead(200, contentType.css);
-//     utils.getFile("public/css/confetti_cuisine.css", res)
-// })
+// const dbURL = "mongodb://localhost:27017";
+// const dbName = "recipe_db";
 
-// http.createServer(router.handle).listen(port)
+// MongoClient.connect(dbURL, (error, client) => {
+//     if (error) throw error;
 
-// console.log('server running')
+//     const db = client.db(dbName);
+
+//     // Find documents in the "contacts" collection
+//     db.collection("contacts").find().toArray((error, data) => {
+//         if (error) throw error;
+//         console.log("Contacts:");
+//         console.log(data);
+//     });
+
+//     // Insert a new document into the "contacts" collection
+//     db.collection("contacts").insertOne({
+//         name: "Freddie Mercury",
+//         email: "freddie@email.com"
+//     }, (error, result) => {
+//         if (error) throw error;
+//         console.log("Inserted document:", result.ops[0]);
+//     });
+
+//     // Close the connection after operations
+//     client.close();
+// });
+
+const mongoose = require('mongoose');
+mongoose.connect(
+    "mongodb://localhost:27017/recipe_db",
+);
+const db = mongoose.connection;
+
+db.once("open", () => {
+    console.log("succes")
+})
+
+const subscriberSchema = mongoose.Schema({
+    name: String,
+    email: String,
+    zipCode: Number
+})
+
+const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+
+
 
 const express = require('express');
 const app = express();
