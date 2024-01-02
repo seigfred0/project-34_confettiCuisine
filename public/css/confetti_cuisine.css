@@ -141,3 +141,23 @@ nav ul {
 .contact-page .home-image img {
     width: 100%;
 }
+
+
+/* Subscriber.ejs */
+.subscriber-page {
+    border: 3px dashed black;
+    padding: 1em;
+
+}
+
+.subscriber-page_name {
+    padding-top: 1em;
+}
+
+.italic {
+    font-weight: 700;
+}
+
+.subscriber-page_email {
+    margin-bottom: 1em;
+}

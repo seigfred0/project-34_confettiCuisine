@@ -1,0 +1,8 @@
+
+<section class="subscriber-page page">
+        <% subscribers.forEach( s => { %>
+            <p class="subscriber-page_name"><span class="italic">Name:  </span><%= s.name %></p>
+            <p class="subscriber-page_email"><span class="italic">Email:  </span><%= s.email %></p>
+            <hr>
+        <%}) %>
+</section>

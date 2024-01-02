@@ -5,13 +5,12 @@
             <img src="/images/food2.jpg" alt="">
         </div>
         
-        <form action="/contact" method="post">
-            <label for="name">Name</label>
-            <input type="text" name="name">
-        
-            <label for="email">Email</label>
-            <input type="email" name="email">
-            <input class="btn" type="button" value="Submit">
+
+        <form action="/subscribe" method="post">
+            <input type="text" name="name" placeholder="Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="zipCode" placeholder="Zip Code" pattern="[0-9]{5}">
+            <input class="btn" type="submit" name="submit">
         </form>
     </div>
 </section>
