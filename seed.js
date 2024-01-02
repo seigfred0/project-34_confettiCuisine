@@ -25,6 +25,7 @@ const contacts = [
     }
 ]
 
+
 // Subscriber.deleteMany().exec().then(() => {
 //     console.log("Subscriber data is empty");
 // });

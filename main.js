@@ -12,30 +12,6 @@ db.once("open", () => {
     console.log("succes")
 })
 
-// var subscriber1 = new Subscriber({
-//     name: "Jon Wexler",
-//     email: "jon@jonwexler.com"
-// });
-
-// var subscriber2 = new Subscriber({
-//     name: "Seigfred Sayson",
-//     email: "seigfred@mail.com"
-// });
-
-// subscriber1.save()
-//     .then(() => subscriber2.save())
-//     .then(() => {
-//         return Subscriber.findOne({
-//             name: "Jon Wexler"
-//         }).where("email", /wexler/).exec();
-//     })
-//     .then((data) => {
-//         if (data) console.log(data.name);
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//     });
-
 
 const express = require('express');
 const app = express();
@@ -61,19 +37,16 @@ app.get("/", (req, res) => {
 
 
 
-app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
-    // console.log(req.data);
-    // res.status(200).send(req.data);
-    console.log("Number of subscribers in req.data:", req.data.length);
-    
-
-    res.render("subscribers", {subscribers: req.data});
-})
+// app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
+//     console.log("Number of subscribers in req.data:", req.data.length);
+//     res.render("subscribers", {subscribers: req.data});
+// })
+app.get("/subscribers", subscribersController.getAllSubscribers);
 
 
 app.get("/courses", homeController.showCourses);
-app.get("/contact", homeController.showSignUp);
-app.post("/contact", homeController.postedSignUpForm);
+// app.get("/contact", homeController.showSignUp);
+// app.post("/contact", homeController.postedSignUpForm);
 
 app.get("/contact", subscribersController.getSubscriptionPage);
 app.post("/subscribe", subscribersController.saveSubscriber);
