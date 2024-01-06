@@ -13,16 +13,28 @@ var courses = [
     },
 ]
 
-exports.showCourses = (req, res) => {
-    res.render("courses", {
-        offeredCourses: courses
-    });
-};
+module.exports = {
+    showCourses: (req, res) => {
+            res.render("courses", {
+                offeredCourses: courses
+        });
+    },
+    showSignUp: (req, res) => {
+        res.render("contact");
+    },
+    postedSignUpForm: (req, res) => {
+        res.render("thanks");
+    }
+}
 
-exports.showSignUp = (req, res) => {
-    res.render("contact");
-};
+// exports.showCourses = (req, res) => {
+//     res.render("courses", {
+//         offeredCourses: courses
+//     });
+// };
 
-exports.postedSignUpForm = (req, res) => {
-    res.render("thanks");
-};
+
+
+// postedSignUpForm = (req, res) => {
+//     res.render("thanks");
+// };
