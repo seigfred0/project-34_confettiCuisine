@@ -161,3 +161,9 @@ nav ul {
 .subscriber-page_email {
     margin-bottom: 1em;
 }
+
+
+/* Table */
+.table {
+    width: 500px;
+}
