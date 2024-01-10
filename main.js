@@ -20,6 +20,11 @@ const layouts = require('express-ejs-layouts');
 const errorController = require('./controllers/errorController')
 const homeController = require('./controllers/homeControllers')
 const usersController = require("./controllers/usersController")
+const router = express.Router();
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/", router);
 
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
@@ -37,6 +42,13 @@ app.get("/", (req, res) => {
 
 app.get("/users", usersController.index, usersController.indexView)
 
+
+router.get("/users/new", usersController.new);
+router.post("/users/create", usersController.create, usersController.redirectView);
+
+// router.post("/users/create", (req, res) => {
+//     console.log(req.body);
+// })
 // app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
 //     console.log("Number of subscribers in req.data:", req.data.length);
 //     res.render("subscribers", {subscribers: req.data});

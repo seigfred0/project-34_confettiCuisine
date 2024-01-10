@@ -8,7 +8,7 @@ exports.getAllSubscribers = (req, res) => {
             });
         }).catch((error) => {
             console.log(error.message);
-            return [];
+            return [];  ``
         }).then(() => {
             console.log("promise complete");
         });
