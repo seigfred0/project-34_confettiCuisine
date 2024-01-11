@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
+const Subscriber = require("./subscriber");
 
 const userSchema = new Schema({
     name: {
@@ -31,6 +32,23 @@ const userSchema = new Schema({
     subscribedAccount: {type: Schema.Types.ObjectId, ref: "Subscriber"}
 }, {
     timestamps: true
+})
+
+userSchema.pre("save", function(next) {
+    let user = this;
+    if (user.subscribedAccount == undefined) {
+        Subscriber.findOne({
+            email: user.email
+        }).then(subscriber => {
+            user.subscribedAccount = subscriber;
+            next();
+        }).catch(error => {
+            console.log(`Error in connecting subscriber: ${error.message}`);
+            next(error);
+        });
+    } else {
+        next();
+    }
 })
 
 userSchema.virtual("fullname").get(function() {
