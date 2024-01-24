@@ -1,5 +1,41 @@
-const mongoose = require('mongoose');
-const subscriberSchema = mongoose.Schema({
+// const mongoose = require('mongoose');
+// const subscriberSchema = mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true
+//     },
+//     email: {
+//         type: String,
+//         required: true,
+//         lowercase: true,
+//         unique: true
+//     },
+//     zipCode: {
+//         type: Number,
+//         min: [10000, "Zip Code too short"],
+//         max: 99999
+//     },
+//     course: [
+//         {type: mongoose.Schema.Types.ObjectId, ref: "Course"}
+//     ]
+
+// });
+
+
+// subscriberSchema.methods.getInfo = function() {
+//     return `Name: ${this.name} Email: ${this.email} Zip Code: ${this.zipCode}`;
+// };
+
+// subscriberSchema.methods.findLocalSubscribers = function() {
+//     return this.model("Subscriber").find({zipCode: this.zipCode}).exec();
+// };
+
+// module.exports = mongoose.model("Subscriber", subscriberSchema);
+
+
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+const subscriberSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -12,27 +48,16 @@ const subscriberSchema = mongoose.Schema({
     },
     zipCode: {
         type: Number,
-        min: [10000, "Zip Code too short"],
+        min: [10000, "Zip code too short"],
         max: 99999
     },
-    course: [
-        {type: mongoose.Schema.Types.ObjectId, ref: "Course"}
-    ]
-
+    courses: [{type: Schema.Types.ObjectId, ref: "Course"}]
+}, {
+    timestamps: true
 });
 
-
-subscriberSchema.methods.getInfo = function() {
+subscriberSchema.methods.getInfo = function () {
     return `Name: ${this.name} Email: ${this.email} Zip Code: ${this.zipCode}`;
 };
 
-subscriberSchema.methods.findLocalSubscribers = function() {
-    return this.model("Subscriber").find({zipCode: this.zipCode}).exec();
-};
-
-
-
-
-
-// const Subscriber = mongoose.model("Subscriber", subscriberSchema);
-module.exports = mongoose.model("Subscriber", subscriberSchema);
+module.exports = mongoose.model("Subscriber", subscriberSchema)

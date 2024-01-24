@@ -1,21 +1,30 @@
 const mongoose = require("mongoose");
-
-const courseSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        unique: true
+const { Schema } = require("mongoose");
+const courseSchema = new Schema(
+    {
+        title: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        maxStudents: {
+            type: Number,
+            default: 0,
+            min: [0, "Course can't have a negative number of students"]
+        },
+        cost: {
+            type: Number,
+            default: 0,
+            min: [0, "Course can't have a negative cost"]
+        }
     },
-    description: {
-        type: String,
-        required: true
-    },
-    items: [],
-    zipCode: {
-        type: Number,
-        min: [10000, "Zip Code too short"],
-        max: 99999
+    {
+        timestamps: true
     }
-});
+);
 
 module.exports = mongoose.model("Course", courseSchema);
