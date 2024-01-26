@@ -34,6 +34,10 @@ const userSchema = new Schema({
     timestamps: true
 })
 
+userSchema.virtual("fullname").get(function() {
+    return `${this.name.first} ${this.name.last}`;
+})
+
 userSchema.pre("save", function(next) {
     let user = this;
     if (user.subscribedAccount == undefined) {
@@ -51,8 +55,5 @@ userSchema.pre("save", function(next) {
     }
 })
 
-userSchema.virtual("fullname").get(function() {
-    return `${this.name.first} ${this.name.last}`;
-})
 
 module.exports = mongoose.model("User", userSchema);
